@@ -70,7 +70,7 @@ export const replacer = (replacement) => (raw) => {
       [pattern, raw] = [raw, pattern]
     }
 
-    replaceChildren({
+    return replaceChildren({
       pattern,
       replacement
     })(raw)

@@ -1,6 +1,6 @@
 {
   "name": "react-replacer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Replace strings within a Reactjs component, to avoid using dangerouslySetInnerHTML.",
   "main": "src/index.js",
   "scripts": {},
