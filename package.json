@@ -1,0 +1,29 @@
+{
+  "name": "react-replacer",
+  "version": "0.0.1",
+  "description": "Replace strings within a Reactjs component, to avoid using dangerouslySetInnerHTML.",
+  "main": "src/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhulongzheng/react-replacer.git"
+  },
+  "keywords": [
+    "replace",
+    "string",
+    "react",
+    "react.js",
+    "reactjs",
+    "regular",
+    "expression",
+    "pattern",
+    "regex",
+    "match"
+  ],
+  "author": "2hu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zhulongzheng/react-replacer/issues"
+  },
+  "homepage": "https://github.com/zhulongzheng/react-replacer#readme"
+}
