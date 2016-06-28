@@ -1,9 +1,12 @@
 {
   "name": "react-replacer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Replace strings within a Reactjs component, to avoid using dangerouslySetInnerHTML.",
-  "main": "src/index.js",
-  "scripts": {},
+  "main": "index.umd.js",
+  "jsnext:main": "index.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zhulongzheng/react-replacer.git"
@@ -25,5 +28,10 @@
   "bugs": {
     "url": "https://github.com/zhulongzheng/react-replacer/issues"
   },
-  "homepage": "https://github.com/zhulongzheng/react-replacer#readme"
+  "homepage": "https://github.com/zhulongzheng/react-replacer#readme",
+  "devDependencies": {
+    "babel-preset-es2015-rollup": "^1.1.1",
+    "rollup": "^0.33.0",
+    "rollup-plugin-babel": "^2.6.1"
+  }
 }
