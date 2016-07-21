@@ -1,10 +1,11 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'react'], factory) :
-  (factory((global.reactReplacer = global.reactReplacer || {}),global.React));
-}(this, function (exports,React) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('core-js/fn/regexp/flags')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'react', 'core-js/fn/regexp/flags'], factory) :
+  (factory((global.reactReplacer = global.reactReplacer || {}),global.React,global.flag));
+}(this, function (exports,React,flag) { 'use strict';
 
   React = 'default' in React ? React['default'] : React;
+  flag = 'default' in flag ? flag['default'] : flag;
 
   var toArray = function (arr) {
     return Array.isArray(arr) ? arr : Array.from(arr);
@@ -58,9 +59,10 @@
       // checkout String.prototype.split(), Capturing parentheses
       if (head.pattern instanceof RegExp) {
         var source = head.pattern.source;
+        var flags = flag(head.pattern);
 
         if (!/^\(.*\)$/.test(source)) {
-          head.pattern = new RegExp('(' + source + ')', head.pattern.global ? head.pattern.flags : head.pattern.flags + 'g');
+          head.pattern = new RegExp('(' + source + ')', head.pattern.global ? flags : flags + 'g');
         }
       } else {
         if (!/^\(.*\)$/.test(head.pattern)) {
@@ -72,7 +74,7 @@
       var lastIndex = 0;
       var match = void 0;
 
-      while (match = head.pattern.exec(raw)) {
+      while ((match = head.pattern.exec(raw)) !== null) {
         if (match.index > lastIndex) {
           children.push(replaceChildren(tail)(raw.slice(lastIndex, match.index)));
         }

@@ -1,4 +1,5 @@
 import React from 'react'
+import flag from 'core-js/fn/regexp/flags'
 
 let keyid = 0
 
@@ -32,11 +33,12 @@ export default function replaceChildren(rules) {
     // checkout String.prototype.split(), Capturing parentheses
     if (head.pattern instanceof RegExp) {
       let source = head.pattern.source
+      let flags = flag(head.pattern)
 
       if (!/^\(.*\)$/.test(source)) {
         head.pattern = new RegExp(`(${source})`, head.pattern.global
-          ? head.pattern.flags
-          : head.pattern.flags + 'g')
+          ? flags
+          : flags + 'g')
       }
     } else {
       if (!/^\(.*\)$/.test(head.pattern)) {
@@ -48,7 +50,7 @@ export default function replaceChildren(rules) {
     let lastIndex = 0
     let match
 
-    while(match = head.pattern.exec(raw)) {
+    while((match = head.pattern.exec(raw)) !== null) {
       if (match.index > lastIndex) {
         children.push(replaceChildren(tail)(raw.slice(lastIndex, match.index)))
       }
